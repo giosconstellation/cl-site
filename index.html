@@ -1625,36 +1625,8 @@
 	<script src="assets/js/tracking.js"></script>
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 	<script>
 		$('select').material_select();
-
-		$("#tokenForm").validate({
-			rules: {
-				first_name: {
-					required: true,
-					minlength: 5
-
-				},
-				//For custom messages
-				messages: {
-					first_name: {
-						required: "Enter a username",
-						minlength: "Enter at least 5 characters"
-					}
-
-				},
-				errorElement: 'div',
-				errorPlacement: function (error, element) {
-					var placement = $(element).data('error');
-					if (placement) {
-						$(placement).append(error)
-					} else {
-						error.insertAfter(element);
-					}
-				}
-			});
-
 	</script>
 
 
