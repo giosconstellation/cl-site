@@ -1181,21 +1181,11 @@
 							<!-- .container  -->
 						</div>
 						<!-- .team-profile  -->
-
 					</div>
 				</div>
 				<!-- .col  -->
 			</div>
 			<!-- .row  -->
-
-
-
-
-
-
-
-
-
 		</div>
 	</div>
 	<!-- Start Section -->
@@ -1396,13 +1386,12 @@
 	</div>
 	<!-- End Section -->
 
-
 	<!-- Start Section -->
 	<div class="section section-pad section-bg section-pro contact-section" id="contact">
 		<div class="container">
 			<div class="row text-center">
 				<div class="col-lg-6 offset-lg-3">
-					<div class="section-head-s2">
+					<div class="section-head-s2" style="padding-bottom:0;">
 						<h6 class="heading-xs animated" data-animate="fadeInUp" data-delay=".0">Token Information</h6>
 						<h2 class="section-title animated" data-animate="fadeInUp" data-delay=".1">Constellation Token Information Request</h2>
 					</div>
@@ -1410,15 +1399,15 @@
 				<!-- .col  -->
 			</div>
 			<!-- .container -->
-			<div class="container col s8">
+			<div class="container col-sm-12 col-lg-8">
 				<!-- .row  -->
 				<div class="row">
 					<!-- .col  -->
-					<form class="col s12">
+					<form id="tokenForm" class="col s12">
 						<div class="row">
 							<div class="input-field col s6">
 								<input id="first_name" type="text" class="validate">
-								<label for="first_name">First Name</label>
+								<label for="first_name" data-error="Please enter your first name" data-success="right" required="required">First Name</label>
 							</div>
 							<div class="input-field col s6">
 								<input id="last_name" type="text" class="validate">
@@ -1477,16 +1466,17 @@
 							</div>
 						</div>
 						<div class="file-field input-field">
-							<div class="btn">
-								<span>File</span>
+							<div class="btn" style="background-color:#1559FF; background-image:none;">
+								<span>Documents</span>
 								<input type="file">
 							</div>
 							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text">
+								<input class="file-path validate" type="text" placeholder="Please upload a proof of address document for KYC/AML purposes.">
 							</div>
 						</div>
 						<div class="row">
-							<button class="btn waves-effect waves-light" type="submit" name="action">Submit
+							<button style="width:100%; margin-top:32px; background-image:none; background-color: #1559FF" class="btn waves-effect waves-light"
+							 type="submit" name="action">Submit
 								<!-- <i class="material-icons right">send</i> -->
 							</button>
 						</div>
@@ -1635,8 +1625,36 @@
 	<script src="assets/js/tracking.js"></script>
 	<!-- Compiled and minified JavaScript -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.17.0/jquery.validate.min.js"></script>
 	<script>
 		$('select').material_select();
+
+		$("#tokenForm").validate({
+			rules: {
+				first_name: {
+					required: true,
+					minlength: 5
+
+				},
+				//For custom messages
+				messages: {
+					first_name: {
+						required: "Enter a username",
+						minlength: "Enter at least 5 characters"
+					}
+
+				},
+				errorElement: 'div',
+				errorPlacement: function (error, element) {
+					var placement = $(element).data('error');
+					if (placement) {
+						$(placement).append(error)
+					} else {
+						error.insertAfter(element);
+					}
+				}
+			});
+
 	</script>
 
 
